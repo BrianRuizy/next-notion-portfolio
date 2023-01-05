@@ -17,7 +17,7 @@ export default function Home({posts}) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <div className="container max-w-6xl mt-12 mx-auto px-4 flex flex-col gap-6">
+        <div className="container max-w-6xl mt-12 mx-auto px-6 flex flex-col gap-6">
           <header className="">
             <p className="text-neutral-500 text-sm">Good morning</p>
             <h1 className="text-4xl font-extrabold">Home</h1>
