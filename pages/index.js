@@ -2,6 +2,8 @@ import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
 
+import Header from "../components/header";
+
 import { getAllPublished } from '../lib/notion';
 import Link from 'next/link';
 
@@ -17,49 +19,51 @@ export default function Home({posts}) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <div className="container max-w-6xl mt-12 mx-auto px-6 flex flex-col gap-6">
-          <header className="">
-            <p className="text-neutral-500 text-sm">Good morning</p>
-            <h1 className="text-4xl font-extrabold">Home</h1>
-            <hr className="divide my-2 border-neutral-200 dark:border-neutral-800"></hr>
-          </header>
+        <div className="px-6 flex flex-col gap-6">
+         <Header />
           
-          <div id="content">
-          { posts.map((post, index) => (
-          <section key={index}>
-            <div>
-              <h2>
-                <Link href={post.slug}>{post.title}</Link>
-              </h2>
-            </div>           
-            <div>{post.date}</div>
-            <p>{post.description}</p>
-          </section>
-        ))}
+          <div id="content" className="container max-w-5xl mx-auto">
+            <div className="flex flex-col divide-y gap-2 mb-2">
+              { posts.map((post, index) => (
+                <section key={index}>
+                  <div>
+                    <Image src={post.cover} width={100} height={100} alt={post.title} />
+                    <small>{post.category}</small>
+                    <h2>
+                      <Link href={post.slug}>{post.title}</Link>
+                    </h2>
+                  </div>           
+                  <p>{post.description}</p>
+                  <div>{post.date}</div>
+                </section>
+              ))}
+            </div>
             
-            <div className="flex gap-6 flex-wrap">
-              <div className="bg-neutral-200 dark:bg-neutral-900 min-h-[20rem] rounded-3xl p-6 md:p-8 grow">
+            <div id="about" className="flex gap-6 flex-wrap">
+              <div className="bg-neutral-200 dark:bg-neutral-900 min-h-[20rem] rounded-2xl md:rounded-3xl p-6 md:p-8 grow">
                 <h2 className="text-2xl font-bold">Card 1</h2>
                 <p className="text-gray-500">Lorem ipsum dolor sit amet.</p>
               </div>
-              <div className="bg-neutral-200 dark:bg-neutral-900 min-h-[20rem] rounded-3xl p-6 md:p-8 min-w-[20%] w-full md:w-2/5">
+              <div className="bg-neutral-200 dark:bg-neutral-900 min-h-[20rem] rounded-2xl md:rounded-3xl p-6 md:p-8 min-w-[20%] w-full md:w-2/5">
                 <h2 className="text-2xl font-bold">Card 2</h2>
                 <p className="text-neutral-500">Lorem ipsum dolor sit amet.</p>
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-6 flex-wrap mt-6">
-              <div className="bg-neutral-200 dark:bg-neutral-900 min-h-[32rem] rounded-3xl p-6 col-span-2 md:col-span-1 relative overflow-clip">
+            <div id="posts" className="grid grid-cols-2 gap-6 flex-wrap my-6">
+              <div className="bg-neutral-200 dark:bg-neutral-900 min-h-[32rem] rounded-2xl md:rounded-3xl p-6 col-span-2 md:col-span-1 relative overflow-hidden will-change-transform">
                 <div
-                  className="bg-[#6b5ce5] bg-cover bg-center absolute w-full h-full bottom-0 left-0 rounded-3xl hover:scale-105 transition-all duration-1000 ease-in-out"
+                  className="z-0 bg-cover bg-center absolute w-full h-full bottom-0 left-0 rounded-2xl md:rounded-3xl hover:scale-105 transition-all duration-1000 ease-in-out"
                   style={{backgroundImage: "url(./hero.png)"}}
                 />
-                <div className="z-10 relative flex flex-col gap-1.5">
+                <div className="z-10 absolute -inset-2 bg-gradient-to-b from-black/25 h-2/6" />
+
+                <div className="z-20 relative flex flex-col gap-1.5">
                   <div className="flex justify-between gap-4 items-center border-b pb-1 mb-2 border-white/20 "> 
                     <p className="uppercase tracking-tight text-white/80 text-sm font-medium">Case study</p>
                     <button
                       type="button"
-                      className="text-white/80 absolute right-0 tip-0"
+                      className="text-white/80"
                       aria-label="Arrow up-right"
                     >
                       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
@@ -67,19 +71,34 @@ export default function Home({posts}) {
                       </svg>
                     </button>
                   </div>
-                  <h2 className="text-3xl md:text-4xl font-bold text-white">Python COVID tracker</h2>
+                  <h2 className="text-3xl font-bold text-white">Python COVID tracker</h2>
                   <p className="text-white/70 text-sm md:text-base line-clamp-2">
                     Our open-source app gained over 40k visits, and 
                     contributions from around the globe.</p>
                 </div>
               </div>
-              {[...Array(4)].map((_, i) => (
-                <div
-                  key={i}
-                  className="bg-neutral-200 dark:bg-neutral-900 min-h-[24rem] rounded-3xl p-6 md:p-8 col-span-2 md:col-span-1"
-                >
-                  <h2 className="text-2xl font-bold">Card {i + 3}</h2>
-                  <p className="text-gray-500">Lorem ipsum dolor sit amet.</p>
+              { posts.map((post, index) => (
+                <div key={index} className="bg-neutral-200 dark:bg-neutral-900 min-h-[32rem] rounded-2xl md:rounded-3xl p-6 col-span-2 md:col-span-1 relative overflow-hidden will-change-transform">
+                  <div
+                    className="z-0 bg-cover bg-center absolute w-full h-full bottom-0 left-0 rounded-2xl md:rounded-3xl hover:scale-105 transition-all duration-1000 ease-in-out"
+                    style={{backgroundImage: `url(${post.cover})`}}
+                  />
+
+                  <div className="z-10 absolute -inset-2 bg-gradient-to-b from-black/25 h-2/6"  />
+
+
+                  <div className="z-20 relative flex flex-col gap-1.5">
+                    <div className="flex justify-between gap-4 items-center border-b pb-1 mb-2 border-white/20 "> 
+                      <p className="uppercase tracking-tight text-white/80 text-sm font-medium">{post.category}</p>
+                      <button type="button" className="text-white/80" aria-label="Arrow up-right">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM12.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM18.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
+                        </svg>
+                      </button>
+                    </div>
+                    <h2 className="text-3xl font-bold text-white">{post.title}</h2>
+                    <p className="text-white/70 text-sm md:text-base line-clamp-2">{post.description}</p>
+                  </div>
                 </div>
               ))}
             </div>
