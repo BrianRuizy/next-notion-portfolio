@@ -1,11 +1,13 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import { Inter } from '@next/font/google'
-import styles from '../styles/Home.module.css'
+import Head from "next/head";
+import Image from "next/image";
+import styles from "../styles/Home.module.css";
 
-const inter = Inter({ subsets: ['latin'] })
+import { getAllPublished } from '../lib/notion';
+import Link from 'next/link';
 
-export default function Home() {
+export default function Home({posts}) {
+  if(!posts) return <h1>No posts</h1>
+
   return (
     <>
       <Head>
@@ -14,110 +16,87 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={styles.main}>
-        <div className={styles.description}>
-          <p>
-            Get started by editing&nbsp;
-            <code className={styles.code}>pages/index.js</code>
-          </p>
-          <div>
-            <a
-              href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              By{' '}
-              <Image
-                src="/vercel.svg"
-                alt="Vercel Logo"
-                className={styles.vercelLogo}
-                width={100}
-                height={24}
-                priority
-              />
-            </a>
+      <main>
+        <div className="container max-w-6xl mt-12 mx-auto px-4 flex flex-col gap-6">
+          <header className="">
+            <p className="text-neutral-500 text-sm">Good morning</p>
+            <h1 className="text-4xl font-extrabold">Home</h1>
+            <hr className="divide my-2 border-neutral-200 dark:border-neutral-800"></hr>
+          </header>
+          
+          <div id="content">
+          { posts.map((post, index) => (
+          <section key={index}>
+            <div>
+              <h2>
+                <Link href={post.slug}>{post.title}</Link>
+              </h2>
+            </div>           
+            <div>{post.date}</div>
+            <p>{post.description}</p>
+          </section>
+        ))}
+            
+            <div className="flex gap-6 flex-wrap">
+              <div className="bg-neutral-200 dark:bg-neutral-900 min-h-[20rem] rounded-3xl p-6 md:p-8 grow">
+                <h2 className="text-2xl font-bold">Card 1</h2>
+                <p className="text-gray-500">Lorem ipsum dolor sit amet.</p>
+              </div>
+              <div className="bg-neutral-200 dark:bg-neutral-900 min-h-[20rem] rounded-3xl p-6 md:p-8 min-w-[20%] w-full md:w-2/5">
+                <h2 className="text-2xl font-bold">Card 2</h2>
+                <p className="text-neutral-500">Lorem ipsum dolor sit amet.</p>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-2 gap-6 flex-wrap mt-6">
+              <div className="bg-neutral-200 dark:bg-neutral-900 min-h-[32rem] rounded-3xl p-6 col-span-2 md:col-span-1 relative overflow-clip">
+                <div
+                  className="bg-[#6b5ce5] bg-cover bg-center absolute w-full h-full bottom-0 left-0 rounded-3xl hover:scale-105 transition-all duration-1000 ease-in-out"
+                  style={{backgroundImage: "url(./hero.png)"}}
+                />
+                <div className="z-10 relative flex flex-col gap-1.5">
+                  <div className="flex justify-between gap-4 items-center border-b pb-1 mb-2 border-white/20 "> 
+                    <p className="uppercase tracking-tight text-white/80 text-sm font-medium">Case study</p>
+                    <button
+                      type="button"
+                      className="text-white/80 absolute right-0 tip-0"
+                      aria-label="Arrow up-right"
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM12.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM18.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
+                      </svg>
+                    </button>
+                  </div>
+                  <h2 className="text-3xl md:text-4xl font-bold text-white">Python COVID tracker</h2>
+                  <p className="text-white/70 text-sm md:text-base line-clamp-2">
+                    Our open-source app gained over 40k visits, and 
+                    contributions from around the globe.</p>
+                </div>
+              </div>
+              {[...Array(4)].map((_, i) => (
+                <div
+                  key={i}
+                  className="bg-neutral-200 dark:bg-neutral-900 min-h-[24rem] rounded-3xl p-6 md:p-8 col-span-2 md:col-span-1"
+                >
+                  <h2 className="text-2xl font-bold">Card {i + 3}</h2>
+                  <p className="text-gray-500">Lorem ipsum dolor sit amet.</p>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-
-        <div className={styles.center}>
-          <Image
-            className={styles.logo}
-            src="/next.svg"
-            alt="Next.js Logo"
-            width={180}
-            height={37}
-            priority
-          />
-          <div className={styles.thirteen}>
-            <Image
-              src="/thirteen.svg"
-              alt="13"
-              width={40}
-              height={31}
-              priority
-            />
-          </div>
-        </div>
-
-        <div className={styles.grid}>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Docs <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Find in-depth information about Next.js features and&nbsp;API.
-            </p>
-          </a>
-
-          <a
-            href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Learn <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Learn about Next.js in an interactive course with&nbsp;quizzes!
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Templates <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Discover and deploy boilerplate example Next.js&nbsp;projects.
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Deploy <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Instantly deploy your Next.js site to a shareable URL
-              with&nbsp;Vercel.
-            </p>
-          </a>
         </div>
       </main>
     </>
-  )
+  );
 }
+
+export const getStaticProps = async () => {
+  const data = await getAllPublished()
+
+  return {
+    props: {
+      posts: data,
+    },
+    revalidate: 60
+  };
+};
