@@ -5,7 +5,7 @@ export default function Header() {
   if (hour >= 5 && hour < 11) greet = "Good morning";
   else if (hour >= 11 && hour < 18) greet = "Good afternoon";
   else if (hour >= 18 && hour < 23) greet = "Good evening";
-  else if (hour === 23 || hour < 5) greet = "Hi, night owl";
+  else if (hour === 23 || hour < 5) greet = "Hello, night owl";
 
   return (
     <header className="container max-w-5xl mt-4 md:mt-12 mx-auto">
