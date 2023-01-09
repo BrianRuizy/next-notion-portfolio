@@ -20,7 +20,7 @@ export default function postList({ posts }) {
         </div>
         <div 
           id="posts" 
-          className="md:container md:max-w-7xl md:mx-auto px-6 relative flex flex-nowrap overflow-x-scroll md:overflow-auto md:grid md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6"
+          className="md:container md:max-w-7xl md:mx-auto px-6 relative flex flex-nowrap overflow-x-scroll md:overflow-auto md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6"
           style=
             {{
               // to maintain shadow on scrollbar
@@ -32,7 +32,7 @@ export default function postList({ posts }) {
             post.category === "Case Study" ? (
               <div
                 key={index}
-                className="shadow-lg bg-neutral-200 dark:bg-neutral-900 min-h-[30rem] min-w-[95%] rounded-2xl md:rounded-3xl p-6 col-span-1 overflow-hidden will-change-transform"
+                className="shadow-lg bg-neutral-200 dark:bg-neutral-900 min-w-[90%] md:min-w-[100%] min-h-[28rem] md:min-h-[30rem] rounded-2xl md:rounded-3xl p-6 col-span-1 overflow-hidden will-change-transform"
               >
                 <Image
                   fill
@@ -51,7 +51,7 @@ export default function postList({ posts }) {
                       </svg>
                     </button>
                   </div>
-                  <h2 className="text-2xl leading-tight font-bold text-white md:pr-2">{post.title}</h2>
+                  <h2 className="text-2xl leading-tight font-bold text-white">{post.title}</h2>
                   <p className="text-white/70 text-sm md:text-base line-clamp-3">{post.description}</p>
                 </div>
               </div>
@@ -63,24 +63,20 @@ export default function postList({ posts }) {
       <section className="container max-w-7xl mx-auto px-6">
         <div className="flex items-center gap-2">
           <Image src="/youtube-icon.png" width={24} height={24} alt="youtube icon"/>
-          <h2 className="text-2xl font-bold text-black dark:text-white tracking-tight">
-            YouTube
-          </h2>
+          <h2 className="text-2xl font-bold text-black dark:text-white tracking-tight">YouTube</h2>
         </div>
-        <p className="text-neutral-400 text-base -mt-1 mb-3">
-          Watch my latest videos!
-        </p>
-        <div id="posts" className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6">
+        <p className="text-neutral-400 text-base -mt-1 mb-3">Watch my latest videos!</p>
+        <div id="posts" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
           {posts.map((post, index) =>
             post.category === "YouTube" ? (
               <div
-                key={post.slug}
+                key={index}
                 className="shadow-lg bg-white dark:bg-neutral-900 divide-neutral-200 dark:divide-neutral-800 divide-y rounded-xl flex flex-col justify-between col-span-2 md:col-span-1"
               >
                 <div className="p-4 flex justify-between gap-4">
                   <div>
                     <a href={post.slug} className="flex-1 text-black dark:text-white font-bold text-lg leading-tight line-clamp-3">{post.title}</a>
-                    <p className="text-neutral-400 text-sm line-clamp-2">{post.description}</p>
+                    <p className="text-neutral-400 text-sm md:text-base line-clamp-2">{post.description}</p>
                   </div>
                   <div className="relative overflow-hidden min-w-[8rem] w-32 h-32 aspect-square rounded-lg">
                     <Image fill className="object-cover" src={post.cover} alt={post.title}/>
@@ -121,8 +117,14 @@ export default function postList({ posts }) {
                         <div className="py-1 divide-y divide-neutral-200 dark:divide-neutral-700">
                           <Menu.Item>
                             <a
-                              href="#"
                               className="text-black dark:text-white/90 px-4 py-2 text-base w-full flex justify-between hover:bg-neutral-100 dark:hover:bg-neutral-800 transition duration-100 ease-in-out"
+                              onClick={() => {
+                                navigator.share({
+                                  title: post.title, 
+                                  url: post.slug,
+                                  text: "Check out Brian's post!", 
+                                })
+                              }}
                             >
                               Share Story
                               <svg
@@ -144,7 +146,6 @@ export default function postList({ posts }) {
                           </Menu.Item>
                           <Menu.Item>
                             <a
-                              href="#"
                               className="text-black dark:text-white/90 px-4 py-2 text-base w-full flex justify-between hover:bg-neutral-100 dark:hover:bg-neutral-800 transition duration-100 ease-in-out "
                               onClick={() => {navigator.clipboard.writeText(post.slug)}}
                             >
@@ -178,18 +179,19 @@ export default function postList({ posts }) {
 
       <section className="container max-w-7xl mx-auto px-6">
         <h2 className="text-2xl font-bold text-black dark:text-white tracking-tight">Blog Posts</h2>
-        <p className="text-neutral-400 text-base -mt-1 mb-3">Additional blogs or links</p>
-        <div id="posts" className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6">
+        <p className="text-neutral-400 text-base -mt-1 mb-3">Additional readings</p>
+        <div id="posts" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
           {posts.map((post, index) =>
             post.category === "Blog" ? (
               <div
-                key={post.slug}
+                key={index}
                 className="shadow-lg bg-white dark:bg-neutral-900 divide-neutral-200 dark:divide-neutral-800 divide-y rounded-xl flex flex-col justify-between col-span-2 md:col-span-1"
               >
                 <div className="p-4 flex flex-col-reverse justify-between gap-4">
                   <div>
+                    <p className="text-base capitalize font-serif italic opacity-80 mb-1">{post.tags[0]}</p>
                     <a href={post.slug} className="flex-1 text-black dark:text-white font-bold text-xl leading-tight line-clamp-3">{post.title}</a>
-                    <p className="text-neutral-400 text-sm line-clamp-2">{post.description}</p>
+                    <p className="text-neutral-400 text-sm md:text-base line-clamp-2">{post.description}</p>
                   </div>
                   <div className="relative overflow-hidden aspect-video rounded-lg">
                     <Image fill className="object-cover" src={post.cover} alt={post.title}/>
@@ -230,8 +232,14 @@ export default function postList({ posts }) {
                         <div className="py-1 divide-y divide-neutral-200 dark:divide-neutral-700">
                           <Menu.Item>
                             <a
-                              href="#"
                               className="text-black dark:text-white/90 px-4 py-2 text-base w-full flex justify-between hover:bg-neutral-100 dark:hover:bg-neutral-800 transition duration-100 ease-in-out"
+                              onClick={() => {
+                                navigator.share({
+                                  title: post.title, 
+                                  url: post.slug,
+                                  text: "Check out Brian's post!", 
+                                })
+                              }}
                             >
                               Share Story
                               <svg
@@ -253,7 +261,6 @@ export default function postList({ posts }) {
                           </Menu.Item>
                           <Menu.Item>
                             <a
-                              href="#"
                               className="text-black dark:text-white/90 px-4 py-2 text-base w-full flex justify-between hover:bg-neutral-100 dark:hover:bg-neutral-800 transition duration-100 ease-in-out"
                               onClick={() => {navigator.clipboard.writeText(post.slug)}}
                             >
