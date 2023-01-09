@@ -18,4 +18,4 @@ NOTION_DATABASE_ID=XXXXXXXXXXXXXXX
 ### Vercel setup 
 Start new project on vercel --you can quickly clone mines [here](https://vercel.com/new/clone?s=https%3A%2F%2Fgithub.com%2FBrianRuizy%2Fnext-notion-portfolio%2F&showOptionalTeamCreation=false). Then you will need to setup your Vercel projects ```.env``` variables, which you created for notion. This is found in *Project Settings > Environment Variables*.
 
-<img width="1324" alt="Screenshot 2023-01-09 at 3 57 19 PM" src="https://user-images.githubusercontent.com/23439187/211416471-f8264f87-1d01-41c0-8345-b1b39e85526b.png">
+<img width="1324" alt="image" src="https://user-images.githubusercontent.com/23439187/211417030-12d3e45f-ecb2-4124-b196-0d3a91d0dc3f.png">
