@@ -8,7 +8,7 @@ export default function Header() {
   else if (hour === 23 || hour < 5) greet = "Hello, night owl";
 
   return (
-    <header className="container max-w-5xl mt-4 md:mt-12 mx-auto">
+    <header className="container max-w-7xl mt-4 md:mt-12 mx-auto">
       <p className="uppercase tracking-tight text-neutral-500 text-sm font-medium">{greet}</p>
       <h1 className="text-4xl font-extrabold">Home</h1>
       <hr className="divide my-2 border-neutral-200 dark:border-neutral-800"></hr>
