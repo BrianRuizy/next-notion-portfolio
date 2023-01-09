@@ -18,20 +18,10 @@ export default function Home({posts}) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <div className="px-6 flex flex-col gap-6">
+        <div className="flex flex-col gap-6">
          <Header />
           
-          <div id="content" className="container max-w-7xl mx-auto flex flex-col gap-8 md:gap-12">
-            <div id="about" className="flex gap-6 flex-wrap">
-              <div className="bg-neutral-200 dark:bg-neutral-900 min-h-[20rem] rounded-2xl md:rounded-3xl p-6 md:p-8 grow">
-                <h2 className="text-2xl font-bold">Card 1</h2>
-                <p className="text-gray-500">Lorem ipsum dolor sit amet.</p>
-              </div>
-              <div className="bg-neutral-200 dark:bg-neutral-900 min-h-[20rem] rounded-2xl md:rounded-3xl p-6 md:p-8 min-w-[20%] w-full md:w-2/5">
-                <h2 className="text-2xl font-bold">Card 2</h2>
-                <p className="text-neutral-500">Lorem ipsum dolor sit amet.</p>
-              </div>
-            </div>
+          <div id="content" className="mb-32 flex flex-col gap-8 md:gap-12">
             <PostList posts={posts} />
           </div>
         </div>

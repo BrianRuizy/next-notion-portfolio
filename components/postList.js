@@ -14,31 +14,45 @@ export default function postList({ posts }) {
   return (
     <>
       <section>
-        <h2 className="text-2xl font-bold">Case Studies</h2>
-        <p className="text-neutral-400 text-base -mt-1 mb-3">Stories with a deeper dive.</p>
-        <div id="posts" className="grid grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6 flex-wrap">
+        <div className="container max-w-7xl mx-auto px-6"> 
+          <h2 className="text-2xl font-bold">Case Studies</h2>
+          <p className="text-neutral-400 text-base -mt-1 mb-3">Stories with a deeper dive.</p>
+        </div>
+        <div 
+          id="posts" 
+          className="md:container md:max-w-7xl md:mx-auto px-6 relative flex flex-nowrap overflow-x-scroll md:overflow-auto md:grid md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6"
+          style=
+            {{
+              // to maintain shadow on scrollbar
+              paddingBottom: "2rem",
+              marginBottom: "-2rem"
+            }}
+        >
           {posts.map((post, index) =>
             post.category === "Case Study" ? (
               <div
                 key={index}
-                className="shadow-lg bg-neutral-200 dark:bg-neutral-900 min-h-[28rem] rounded-2xl md:rounded-3xl p-6 col-span-2 md:col-span-1 overflow-hidden will-change-transform"
+                className="shadow-lg bg-neutral-200 dark:bg-neutral-900 min-h-[30rem] min-w-[95%] rounded-2xl md:rounded-3xl p-6 col-span-1 overflow-hidden will-change-transform"
               >
-                <div
-                  className="z-0 bg-cover bg-center absolute w-full h-full bottom-0 left-0  hover:scale-105 transition-all duration-1000 ease-in-out dark:brightness-90"
-                  style={{ backgroundImage: `url(${post.cover})` }}
+                <Image
+                  fill
+                  src={post.cover}
+                  alt={post.title}
+                  quality={100}
+                  className="z-0 object-cover object-center absolute w-full h-full hover:scale-105 transition-all duration-1000 ease-in-out dark:brightness-90"
                 />
                 <div className="z-10 absolute -inset-2 bg-gradient-to-b from-black/25 h-2/6" />
                 <div className="z-20 relative flex flex-col gap-1.5">
-                  <div className="flex justify-between gap-4 items-center border-b pb-1 mb-2 border-white/20 ">
-                    <p className="text-xs lg:text-sm font-semibold m-0 text-white/80">{post.date}</p>
+                  <div className="flex justify-between gap-4 items-center border-b pb-1 mb-1 border-white/20 ">
+                    <p className="text-xs md:text-sm font-semibold m-0 text-white/80">{post.date}</p>
                     <button type="button" className="text-white/80" aria-label="Arrow up-right">
                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5">
                         <path d="M3 10a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0zM8.5 10a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0zM15.5 8.5a1.5 1.5 0 100 3 1.5 1.5 0 000-3z" />
                       </svg>
                     </button>
                   </div>
-                  <h2 className="text-2xl font-bold text-white md:pr-2">{post.title}</h2>
-                  <p className="text-white/70 text-sm md:text-base line-clamp-2">{post.description}</p>
+                  <h2 className="text-2xl leading-tight font-bold text-white md:pr-2">{post.title}</h2>
+                  <p className="text-white/70 text-sm md:text-base line-clamp-3">{post.description}</p>
                 </div>
               </div>
             ) : null
@@ -46,9 +60,9 @@ export default function postList({ posts }) {
         </div>
       </section>
 
-      <section>
+      <section className="container max-w-7xl mx-auto px-6">
         <div className="flex items-center gap-2">
-          <img src="../youtube-icon.png" className="w-6" />
+          <Image src="/youtube-icon.png" width={24} height={24} alt="youtube icon"/>
           <h2 className="text-2xl font-bold text-black dark:text-white tracking-tight">
             YouTube
           </h2>
@@ -56,14 +70,14 @@ export default function postList({ posts }) {
         <p className="text-neutral-400 text-base -mt-1 mb-3">
           Watch my latest videos!
         </p>
-        <div id="posts" className="grid grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6 flex-wrap">
+        <div id="posts" className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6">
           {posts.map((post, index) =>
             post.category === "YouTube" ? (
               <div
                 key={post.slug}
-                className="shadow-lg bg-white dark:bg-neutral-900 divide-neutral-200 dark:divide-neutral-800 divide-y rounded-xl flex flex-col justify-between col-span-2 lg:col-span-1"
+                className="shadow-lg bg-white dark:bg-neutral-900 divide-neutral-200 dark:divide-neutral-800 divide-y rounded-xl flex flex-col justify-between col-span-2 md:col-span-1"
               >
-                <div className="p-4 flex justify-between gap-6">
+                <div className="p-4 flex justify-between gap-4">
                   <div>
                     <a href={post.slug} className="flex-1 text-black dark:text-white font-bold text-lg leading-tight line-clamp-3">{post.title}</a>
                     <p className="text-neutral-400 text-sm line-clamp-2">{post.description}</p>
@@ -73,7 +87,7 @@ export default function postList({ posts }) {
                   </div>
                 </div>
                 <div className="px-4 py-1 flex justify-between items-center">
-                  <p className="text-xs lg:text-sm font-semibold m-0 text-neutral-400">{post.date}</p>
+                  <p className="text-xs md:text-sm font-semibold m-0 text-neutral-400">{post.date}</p>
                   <Menu as="div" className="relative inline-block text-left">
                     <div>
                       <Menu.Button className="text-neutral-400 hover:text-neutral-600 transition duration-200 ease-in-out">
@@ -103,12 +117,12 @@ export default function postList({ posts }) {
                       leaveFrom="transform opacity-100 scale-100"
                       leaveTo="transform opacity-0 scale-95"
                     >
-                      <Menu.Items className="absolute -right-4 z-50 mt-4 w-56 origin-top-right rounded-lg bg-white/90 backdrop-blur shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                        <div className="py-1 divide-y">
+                      <Menu.Items className="absolute -right-4 z-50 mt-4 w-56 origin-top-right rounded-lg bg-white/75 backdrop-blur-lg shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-neutral-800/75">
+                        <div className="py-1 divide-y divide-neutral-200 dark:divide-neutral-700">
                           <Menu.Item>
                             <a
                               href="#"
-                              className="text-black px-4 py-2 text-base w-full flex justify-between"
+                              className="text-black dark:text-white/90 px-4 py-2 text-base w-full flex justify-between hover:bg-neutral-100 dark:hover:bg-neutral-800 transition duration-100 ease-in-out"
                             >
                               Share Story
                               <svg
@@ -131,7 +145,8 @@ export default function postList({ posts }) {
                           <Menu.Item>
                             <a
                               href="#"
-                              className="text-black px-4 py-2 text-base w-full flex justify-between"
+                              className="text-black dark:text-white/90 px-4 py-2 text-base w-full flex justify-between hover:bg-neutral-100 dark:hover:bg-neutral-800 transition duration-100 ease-in-out "
+                              onClick={() => {navigator.clipboard.writeText(post.slug)}}
                             >
                               Copy Link
                               <svg
@@ -161,19 +176,19 @@ export default function postList({ posts }) {
         </div>
       </section>
 
-      <section>
+      <section className="container max-w-7xl mx-auto px-6">
         <h2 className="text-2xl font-bold text-black dark:text-white tracking-tight">Blog Posts</h2>
         <p className="text-neutral-400 text-base -mt-1 mb-3">Additional blogs or links</p>
-        <div id="posts" className="grid grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6 flex-wrap">
+        <div id="posts" className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6">
           {posts.map((post, index) =>
             post.category === "Blog" ? (
               <div
                 key={post.slug}
-                className="shadow-lg bg-white dark:bg-neutral-900 divide-neutral-200 dark:divide-neutral-800 divide-y rounded-xl flex flex-col justify-between col-span-2 lg:col-span-1"
+                className="shadow-lg bg-white dark:bg-neutral-900 divide-neutral-200 dark:divide-neutral-800 divide-y rounded-xl flex flex-col justify-between col-span-2 md:col-span-1"
               >
-                <div className="p-4 flex flex-col-reverse justify-between gap-6">
+                <div className="p-4 flex flex-col-reverse justify-between gap-4">
                   <div>
-                    <a href={post.slug} className="flex-1 text-black dark:text-white font-bold text-lg leading-tight line-clamp-3">{post.title}</a>
+                    <a href={post.slug} className="flex-1 text-black dark:text-white font-bold text-xl leading-tight line-clamp-3">{post.title}</a>
                     <p className="text-neutral-400 text-sm line-clamp-2">{post.description}</p>
                   </div>
                   <div className="relative overflow-hidden aspect-video rounded-lg">
@@ -181,7 +196,7 @@ export default function postList({ posts }) {
                   </div>
                 </div>
                 <div className="px-4 py-1 flex justify-between items-center">
-                  <p className="text-xs lg:text-sm font-semibold m-0 text-neutral-400">{post.date}</p>
+                  <p className="text-xs md:text-sm font-semibold m-0 text-neutral-400">{post.date}</p>
                   <Menu as="div" className="relative inline-block text-left">
                     <div>
                       <Menu.Button className="text-neutral-400 hover:text-neutral-600 transition duration-200 ease-in-out">
@@ -211,12 +226,12 @@ export default function postList({ posts }) {
                       leaveFrom="transform opacity-100 scale-100"
                       leaveTo="transform opacity-0 scale-95"
                     >
-                      <Menu.Items className="absolute -right-4 z-50 mt-4 w-56 origin-top-right rounded-lg bg-white/90 backdrop-blur shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                        <div className="py-1 divide-y">
+                      <Menu.Items className="absolute -right-4 z-50 mt-4 w-56 origin-top-right rounded-lg bg-white/75 backdrop-blur-lg shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none  dark:bg-neutral-800/75">
+                        <div className="py-1 divide-y divide-neutral-200 dark:divide-neutral-700">
                           <Menu.Item>
                             <a
                               href="#"
-                              className="text-black px-4 py-2 text-base w-full flex justify-between"
+                              className="text-black dark:text-white/90 px-4 py-2 text-base w-full flex justify-between hover:bg-neutral-100 dark:hover:bg-neutral-800 transition duration-100 ease-in-out"
                             >
                               Share Story
                               <svg
@@ -239,7 +254,8 @@ export default function postList({ posts }) {
                           <Menu.Item>
                             <a
                               href="#"
-                              className="text-black px-4 py-2 text-base w-full flex justify-between"
+                              className="text-black dark:text-white/90 px-4 py-2 text-base w-full flex justify-between hover:bg-neutral-100 dark:hover:bg-neutral-800 transition duration-100 ease-in-out"
+                              onClick={() => {navigator.clipboard.writeText(post.slug)}}
                             >
                               Copy Link
                               <svg
