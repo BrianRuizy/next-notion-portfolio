@@ -9,8 +9,15 @@ export default function Header() {
 
   return (
     <header className="container max-w-7xl mx-auto px-4 mt-4 md:mt-12">
-      <p className="uppercase tracking-tight text-neutral-500 text-sm font-medium">{greet}</p>
-      <h1 className="text-4xl font-extrabold">Home</h1>
+      <div className="flex justify-between items-end">
+        <div>
+          <p className="uppercase tracking-tight text-neutral-500 text-sm font-medium">{greet}</p>
+          <h1 className="text-4xl font-extrabold">Home</h1>
+        </div>
+        <div className="rounded-full w-8 h-8 md:w-10 md:h-10 bg-cover bg-center bg-neutral-500 dark:bg-neutral-700" style={{ backgroundImage: "url(/memoji.png)" }}>
+
+        </div>
+      </div>
       <hr className="divide my-2 border-neutral-200 dark:border-neutral-800"></hr>
     </header>
   );
