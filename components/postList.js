@@ -14,13 +14,13 @@ export default function postList({ posts }) {
   return (
     <>
       <section>
-        <div className="container max-w-7xl mx-auto px-6"> 
+        <div className="container max-w-7xl mx-auto px-4"> 
           <h2 className="text-2xl font-bold">Case Studies</h2>
           <p className="text-neutral-400 text-base -mt-1 mb-3">Stories with a deeper dive.</p>
         </div>
         <div 
           id="posts" 
-          className="md:container md:max-w-7xl md:mx-auto px-6 relative flex flex-nowrap overflow-x-scroll md:overflow-auto md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6"
+          className="md:container md:max-w-7xl md:mx-auto px-4 relative flex flex-nowrap overflow-x-scroll md:overflow-auto md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6"
           style=
             {{
               // to maintain shadow on scrollbar
@@ -33,16 +33,16 @@ export default function postList({ posts }) {
               <Link
                 href={post.slug}
                 key={index}
-                className="shadow-lg bg-neutral-200 dark:bg-neutral-900 min-w-[90%] md:min-w-[100%] min-h-[28rem] md:min-h-[30rem] rounded-2xl md:rounded-3xl p-6 col-span-1 overflow-hidden will-change-transform"
+                className="shadow-lg bg-neutral-200 dark:bg-neutral-900 min-w-[85%] md:min-w-[100%] min-h-[28rem] md:min-h-[30rem] rounded-2xl md:rounded-3xl p-6 col-span-1 overflow-hidden will-change-transform"
               >
                 <Image
                   fill
                   src={post.cover}
                   alt={post.title}
-                  quality={100}
+                  priority={true}
                   className="z-0 object-cover object-center absolute w-full h-full hover:scale-105 transition-all duration-1000 ease-in-out dark:brightness-90"
                 />
-                <div className="z-10 absolute -inset-2 bg-gradient-to-b from-black/25 h-2/6" />
+                <div className="z-10 absolute inset-0 bg-gradient-to-b from-black/25 h-2/6" />
                 <div className="z-20 relative flex flex-col gap-1.5">
                   <div className="flex justify-between gap-4 items-center border-b pb-1 mb-1 border-white/20 ">
                     <p className="text-xs md:text-sm font-semibold m-0 text-white/80">{post.date}</p>
@@ -61,7 +61,7 @@ export default function postList({ posts }) {
         </div>
       </section>
 
-      <section className="container max-w-7xl mx-auto px-6">
+      <section className="container max-w-7xl mx-auto px-4">
         <div className="flex items-center gap-2">
           <Image src="/youtube-icon.png" width={24} height={24} alt="youtube icon"/>
           <h2 className="text-2xl font-bold text-black dark:text-white tracking-tight">YouTube</h2>
@@ -178,7 +178,7 @@ export default function postList({ posts }) {
         </div>
       </section>
 
-      <section className="container max-w-7xl mx-auto px-6">
+      <section className="container max-w-7xl mx-auto px-4">
         <h2 className="text-2xl font-bold text-black dark:text-white tracking-tight">Blog Posts</h2>
         <p className="text-neutral-400 text-base -mt-1 mb-3">Additional readings</p>
         <div id="posts" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">

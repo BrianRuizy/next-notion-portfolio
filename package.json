@@ -14,10 +14,10 @@
     "@notionhq/client": "^2.2.3",
     "eslint": "8.31.0",
     "eslint-config-next": "13.1.1",
-    "fast-average-color": "^9.3.0",
     "next": "13.1.1",
     "notion-to-md": "^2.5.5",
     "react": "18.2.0",
+    "react-color-extractor": "^1.1.2",
     "react-dom": "18.2.0",
     "react-markdown": "^8.0.4"
   },
