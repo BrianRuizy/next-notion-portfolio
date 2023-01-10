@@ -1,4 +1,4 @@
-import { getAllPublished, getSingleBlogPostBySlug } from "../../lib/notion"
+import { getAllPublishedExcludeYouTube, getSingleBlogPostBySlug } from "../../lib/notion"
 import PostDetail from "../../components/postDetail";
 
 const Post = ({ post }) => {
@@ -19,7 +19,7 @@ export const getStaticProps = async ({ params }) => {
 };
 
 export const getStaticPaths = async () => {
-  const posts = await getAllPublished();
+  const posts = await getAllPublishedExcludeYouTube();
   const paths = posts.map(({ slug }) => ({ params: { slug } }));
 
   return {

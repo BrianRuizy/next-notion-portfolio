@@ -31,7 +31,7 @@ export default function postList({ posts }) {
           {posts.map((post, index) =>
             post.category === "Case Study" ? (
               <Link
-                href={post.slug}
+                href={`posts/${post.slug}`}
                 key={index}
                 className="shadow-lg bg-neutral-200 dark:bg-neutral-900 min-w-[85%] md:min-w-[100%] min-h-[28rem] md:min-h-[30rem] rounded-2xl md:rounded-3xl p-6 col-span-1 overflow-hidden will-change-transform"
               >
@@ -74,15 +74,15 @@ export default function postList({ posts }) {
                 key={index}
                 className="shadow-lg bg-white dark:bg-neutral-900 divide-neutral-200 dark:divide-neutral-800 divide-y rounded-xl flex flex-col justify-between col-span-2 md:col-span-1"
               >
-                <div className="p-4 flex justify-between gap-4">
+                <Link href={post.slug} target="_blank" className="p-4 flex justify-between gap-4">
                   <div>
-                    <a href={post.slug} className="flex-1 text-black dark:text-white font-bold text-lg leading-tight line-clamp-3">{post.title}</a>
+                    <h2 className="flex-1 text-black dark:text-white font-bold text-lg leading-tight line-clamp-3">{post.title}</h2>
                     <p className="text-neutral-400 text-sm md:text-base line-clamp-2">{post.description}</p>
                   </div>
                   <div className="relative overflow-hidden min-w-[8rem] w-32 h-32 aspect-square rounded-lg">
                     <Image fill className="object-cover" src={post.cover} alt={post.title}/>
                   </div>
-                </div>
+                </Link>
                 <div className="px-4 py-1 flex justify-between items-center">
                   <p className="text-xs md:text-sm font-semibold m-0 text-neutral-400">{post.date}</p>
                   <Menu as="div" className="relative inline-block text-left">
@@ -191,7 +191,7 @@ export default function postList({ posts }) {
                 <div className="p-4 flex flex-col-reverse justify-between gap-4">
                   <div>
                     <p className="text-base capitalize font-serif italic opacity-80 mb-1">{post.tags[0]}</p>
-                    <a href={post.slug} className="flex-1 text-black dark:text-white font-bold text-lg leading-tight line-clamp-3">{post.title}</a>
+                    <a href={`posts/${post.slug}`} className="flex-1 text-black dark:text-white font-bold text-lg leading-tight line-clamp-3">{post.title}</a>
                     <p className="text-neutral-400 text-sm md:text-base line-clamp-2">{post.description}</p>
                   </div>
                   <div className="relative overflow-hidden aspect-video rounded-lg">
@@ -237,7 +237,7 @@ export default function postList({ posts }) {
                               onClick={() => {
                                 navigator.share({
                                   title: post.title, 
-                                  url: post.slug,
+                                  url: `/posts/${post.slug}`,
                                   text: "Check out Brian's post!", 
                                 })
                               }}
