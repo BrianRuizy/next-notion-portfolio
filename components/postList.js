@@ -30,7 +30,8 @@ export default function postList({ posts }) {
         >
           {posts.map((post, index) =>
             post.category === "Case Study" ? (
-              <div
+              <Link
+                href={post.slug}
                 key={index}
                 className="shadow-lg bg-neutral-200 dark:bg-neutral-900 min-w-[90%] md:min-w-[100%] min-h-[28rem] md:min-h-[30rem] rounded-2xl md:rounded-3xl p-6 col-span-1 overflow-hidden will-change-transform"
               >
@@ -54,7 +55,7 @@ export default function postList({ posts }) {
                   <h2 className="text-2xl leading-tight font-bold text-white">{post.title}</h2>
                   <p className="text-white/70 text-sm md:text-base line-clamp-3">{post.description}</p>
                 </div>
-              </div>
+              </Link>
             ) : null
           )}
         </div>
@@ -190,7 +191,7 @@ export default function postList({ posts }) {
                 <div className="p-4 flex flex-col-reverse justify-between gap-4">
                   <div>
                     <p className="text-base capitalize font-serif italic opacity-80 mb-1">{post.tags[0]}</p>
-                    <a href={post.slug} className="flex-1 text-black dark:text-white font-bold text-xl leading-tight line-clamp-3">{post.title}</a>
+                    <a href={post.slug} className="flex-1 text-black dark:text-white font-bold text-lg leading-tight line-clamp-3">{post.title}</a>
                     <p className="text-neutral-400 text-sm md:text-base line-clamp-2">{post.description}</p>
                   </div>
                   <div className="relative overflow-hidden aspect-video rounded-lg">
