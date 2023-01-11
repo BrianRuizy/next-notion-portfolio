@@ -4,7 +4,7 @@
 Setup is quick! Make sure you already have a notion account created and we will need **just two things** notion database ID, and your own private notion api key.
 
 ### 1. Notion Setup 
-[Duplicate](https://absorbing-kitchen-6e6.notion.site/a1adcd880b0946a6865c95831f311b03?v=68e06b5467a1478588352270e751cba4) my **Portfolio Posts** notion page, and setup your database [integration](https://developers.notion.com/docs/create-a-notion-integration).
+[Duplicate](https://brianruiz.notion.site/a1adcd880b0946a6865c95831f311b03?v=68e06b5467a1478588352270e751cba4) my **Portfolio Posts** notion page, and setup your database [integration](https://developers.notion.com/docs/create-a-notion-integration).
 
 ![](https://files.readme.io/cbbd7c3-create_integration.gif)
 
