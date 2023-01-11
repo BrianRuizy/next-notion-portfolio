@@ -13,7 +13,7 @@ export default function postList({ posts }) {
       <section>
         <div className="container max-w-6xl mx-auto px-4"> 
           <h2 className="text-2xl font-bold">Case Studies</h2>
-          <p className="text-neutral-400 text-base -mt-1 mb-3">Stories with a deeper dive.</p>
+          <p className="text-neutral-400 text-base -mt-1 mb-3">Readings with a deep dive</p>
         </div>
         <div 
           id="posts" 
