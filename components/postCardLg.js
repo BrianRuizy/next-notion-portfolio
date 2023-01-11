@@ -17,11 +17,11 @@ export default function PostCardLg({ post, index }) {
           src={post.cover}
           alt={post.title}
           priority={true}
-          className="z-0 object-cover object-center aspect-square absolute w-full h-full hover:scale-105 transition-all duration-1000 ease-in-out"
+          className="z-0 object-cover object-center absolute w-full h-full hover:scale-105 transition-all duration-1000 ease-in-out"
         />
-        <Menu as="div" className="relative flex justify-between p-6">
+        <Menu as="div" className="relative flex justify-between p-4">
           <p className="text-xs md:text-sm font-semibold m-0 text-white/80 "
-            style={{textShadow: "2px 3px 5px rgba(0,0,0,0.25)"}}
+            style={{textShadow: "2px 3px 5px rgba(0,0,0,0.20)"}}
           >{post.date}</p>
           <div>
             <Menu.Button className="bg-white/20 dark:bg-black/20 rounded-full text-white hover:opacity-75 transition duration-200 ease-in-out">
