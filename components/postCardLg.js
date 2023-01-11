@@ -9,7 +9,7 @@ export default function PostCardLg({ post, index }) {
     <Link
       href={`posts/${post.slug}`}
       key={index}
-      className="flex flex-col shadow-lg bg-neutral-200 dark:bg-neutral-900 min-w-[80%] md:min-w-[100%] rounded-xl col-span-1 overflow-hidden will-change-transform "
+      className="snap-start flex flex-col shadow-lg bg-neutral-200 dark:bg-neutral-900 min-w-[80%] md:min-w-[100%] rounded-xl col-span-1 overflow-hidden will-change-transform "
     >
       <div className="relative overflow-hidden aspect-square">
         <Image
@@ -20,7 +20,7 @@ export default function PostCardLg({ post, index }) {
           className="z-0 object-cover object-center absolute w-full h-full hover:scale-105 transition-all duration-1000 ease-in-out"
         />
         <Menu as="div" className="relative flex justify-between p-4">
-          <p className="text-xs md:text-sm font-semibold m-0 text-white/80 "
+          <p className="text-xs md:text-sm font-semibold m-0 text-white/80 mt-1"
             style={{textShadow: "2px 3px 5px rgba(0,0,0,0.20)"}}
           >{post.date}</p>
           <div>

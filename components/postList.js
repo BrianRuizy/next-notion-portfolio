@@ -17,7 +17,7 @@ export default function postList({ posts }) {
         </div>
         <div 
           id="posts" 
-          className="md:container md:max-w-6xl md:mx-auto px-4 relative flex flex-nowrap overflow-x-scroll md:overflow-auto md:grid md:grid-cols-2 lg:grid-cols-3 gap-3"
+          className="md:container md:max-w-6xl md:mx-auto px-4 relative flex flex-nowrap overflow-x-scroll snap-x snap-mandatory scroll-pl-4 md:overflow-auto md:grid md:grid-cols-2 lg:grid-cols-3 gap-3"
           style=
             {{
               // to maintain shadow on scrollbar
