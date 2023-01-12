@@ -3,8 +3,9 @@ import ReactMarkdown from "react-markdown";
 
 import Image from "next/image";
 import { useRouter } from 'next/router'
-
 import { ColorExtractor } from "react-color-extractor";
+
+import Footer from "./footer";
 
 export default function PostDetail({ post }) {
   const router = useRouter()
@@ -91,9 +92,10 @@ export default function PostDetail({ post }) {
         </div>
       </header>
 
-      <ReactMarkdown className="mt-12 prose  prose-neutral dark:prose-invert container max-w-2xl mx-auto px-6">
+      <ReactMarkdown className="my-12 prose  prose-neutral dark:prose-invert container max-w-2xl mx-auto px-6">
         {post.markdown}
       </ReactMarkdown>
+      <Footer />
     </article>
   );
 }
