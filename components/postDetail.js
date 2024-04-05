@@ -93,7 +93,7 @@ export default function PostDetail({ post }) {
       </header>
 
       <ReactMarkdown className="my-12 prose  prose-neutral dark:prose-invert container max-w-2xl mx-auto px-6">
-        {post.markdown}
+        {post.markdown.parent}
       </ReactMarkdown>
       <Footer />
     </article>
